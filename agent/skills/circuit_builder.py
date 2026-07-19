@@ -53,11 +53,11 @@ def run(args: dict) -> dict:
         elif gate == "cz" and len(targets) >= 2:
             circuit.cz(targets[0], targets[1])
         elif gate in ("rx",) and len(params) >= 1:
-            circuit.rx(targets[0], params[0])
+            circuit.rx(float(params[0]), int(targets[0]))
         elif gate in ("ry",) and len(params) >= 1:
-            circuit.ry(targets[0], params[0])
+            circuit.ry(float(params[0]), int(targets[0]))
         elif gate in ("rz",) and len(params) >= 1:
-            circuit.rz(targets[0], params[0])
+            circuit.rz(float(params[0]), int(targets[0]))
         elif gate in ("measure", "m"):
             pass  # simulate automatically measures at end
         else:
