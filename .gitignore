@@ -1,0 +1,27 @@
+# Byte-compiled
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+build/
+*.o
+*.out
+
+# Local results (auto-generated)
+quantum/results/plots/
+
+# Agent logs (auto-generated)
+agent/logs/
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+venv/
+.venv/
