@@ -160,7 +160,8 @@ class SkillEngine:
     def _nlu_match(self, text: str) -> tuple[str, dict]:
         """简单的基于关键词的自然语言理解"""
         text_lower = text.lower()
-        args: dict[str, Any] = {}
+        # 保存原始输入用于参数传递（所有技能）
+        args: dict[str, Any] = {"text": text, "gates": text, "input": text}
 
         # 提取 device
         if "gpu" in text_lower or ("device" in text_lower and "gpu" in text_lower):
@@ -195,7 +196,7 @@ class SkillEngine:
             (["vqc", "变分", "分类", "classif"], "vqc_classify"),
             (["平流", "advection", "薛定谔化", "方程"], "advection_sim"),
             (["对比", "compare", "cross", "supa", "backend", "验证"], "compare_backends"),
-            (["自定义", "custom", "线路", "circuit", "h ", "cx ", "门"], "circuit_builder"),
+            (["自定义", "custom", "线路", "circuit"], "circuit_builder"),
             (["可视化", "visual", "图", "plot", "chart", "画"], "visualize"),
             (["帮助", "help", "技能", "skill", "可用"], "help"),
         ]
@@ -203,8 +204,11 @@ class SkillEngine:
             if any(kw in text_lower for kw in keywords):
                 return skill_id, args
 
+        # 保存原始输入用于参数传递
+        args["_raw_input"] = text
+
         # 检查是否有自定义线路语法
-        if re.search(r'(?:构建|创建|create|build).*(?:线路|circuit|门)', text_lower):
+        if re.search(r'(?:h\(|x\(|cx\(|rx\(|ry\(|rz\(|H\s+\d)', text_lower):
             return "circuit_builder", args
 
         return "help", args

@@ -94,7 +94,7 @@ def run(args: dict) -> dict:
         "results": {
             "qubits": qubits,
             "gates": [{"gate": g["gate"], "targets": g["targets"], "params": g.get("params", [])} for g in gates],
-            "state_vector": (state[:16].tolist() if len(state) > 16 else state.tolist()),
+            "state_vector_mag": [float(np.abs(c)) for c in (state[:16] if len(state) > 16 else state)],
             "probabilities": probs_list[:16] if len(probs_list) > 16 else probs_list,
             "truncated": len(state) > 16,
         },
@@ -106,9 +106,32 @@ def _parse_gates(text: str) -> list[dict]:
     gates = []
 
     # 移除常见前缀/后缀
-    text = re.sub(r'(?:构建|创建|create|build|线路|circuit)[：:\s]*', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'(?:构建|创建|create|build|线路|circuit|custom|custom\s+)[：:\s]*', '', text, flags=re.IGNORECASE)
 
-    # 按逗号/分号/空格切分门序列
+    # 先提取所有 gate(q, ...) 模式，再按逗号/分号切分剩余部分
+    paren_pattern = re.compile(r'(\w+)\s*\(([^)]*)\)')
+    found = paren_pattern.findall(text)
+    if found:
+        for gate_name, args_str in found:
+            # 括号内的逗号是参数分隔符
+            raw_args = [a.strip() for a in args_str.split(",") if a.strip()]
+            targets = []
+            params = []
+            for a in raw_args:
+                try:
+                    # 先尝试作为整数 qubit 索引
+                    targets.append(int(a))
+                except ValueError:
+                    try:
+                        params.append(float(a))
+                    except ValueError:
+                        pass
+            if not targets:
+                targets = [0]
+            gates.append({"gate": gate_name, "targets": targets, "params": params})
+        return gates
+
+    # 无括号格式: H 0, CX 0 1
     parts = re.split(r'[;,，；]\s*', text)
 
     for part in parts:
@@ -116,42 +139,32 @@ def _parse_gates(text: str) -> list[dict]:
         if not part:
             continue
 
-        # 匹配: gate(q) 或 gate q 或 gate(q, params...)
-        m = re.match(r'(\w+)\s*\(([^)]*)\)', part)
-        if m:
-            gate_name = m.group(1)
-            args_str = m.group(2)
-            args_list = [a.strip() for a in args_str.split(",") if a.strip()]
+        # 跳过 "all" / "measure"
+        if part.lower() in ("all", "measure", "measure all"):
+            continue
 
+        words = part.split()
+        if len(words) >= 2:
+            gate_name = words[0]
+            rest = words[1:]
+            if "all" in rest:
+                continue
             targets = []
             params = []
-            for a in args_list:
+            for w in rest:
                 try:
-                    params.append(float(a))
+                    # qubit 用 int
+                    targets.append(int(w))
                 except ValueError:
-                    targets.append(int(a))
-
-            if not targets:
-                targets = [0]
-
-            gates.append({"gate": gate_name, "targets": targets, "params": params})
-        else:
-            # 格式: H 0, CX 0 1, measure all
-            words = part.split()
-            if len(words) >= 2:
-                gate_name = words[0]
-                rest = words[1:]
-                if "all" in rest or "all" in gate_name.lower():
-                    continue  # measure all — skip, auto-measured
-                targets = []
-                params = []
-                for w in rest:
                     try:
                         params.append(float(w))
                     except ValueError:
-                        targets.append(int(w))
-                if not targets:
-                    targets = [0]
-                gates.append({"gate": gate_name, "targets": targets, "params": params})
+                        pass
+            if not targets:
+                targets = [0]
+            gates.append({"gate": gate_name, "targets": targets, "params": params})
+        elif len(words) == 1 and words[0].lower() in ("h", "x", "y", "z"):
+            # 单字门不带参数，默认 qubit=0
+            gates.append({"gate": words[0], "targets": [0], "params": []})
 
     return gates
