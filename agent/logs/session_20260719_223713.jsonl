@@ -1,0 +1,2 @@
+{"timestamp": "2026-07-19T14:37:13.154253+00:00", "input": "bell_state", "skill": "bell_state", "status": "ok", "summary": "Bell态制备完成\n  |00⟩: 50.00%\n  |11⟩: 50.00%\n  ✅ CPU与GPU结果一致", "duration_s": 4.727}
+{"timestamp": "2026-07-19T14:37:13.902400+00:00", "input": "grover_search 目标态 101", "skill": "grover_search", "status": "ok", "summary": "Grover搜索算法\n  搜索空间: 3 量子比特 (8 个态)\n  目标态: |101⟩\n  结果: ✅ 搜索成功\nGrover搜索目标 |101⟩ 完成", "duration_s": 0.747}

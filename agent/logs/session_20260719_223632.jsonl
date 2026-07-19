@@ -1,0 +1,1 @@
+{"timestamp": "2026-07-19T14:36:32.482443+00:00", "input": "grover_search 目标态 101", "skill": "grover_search", "status": "error", "summary": "执行失败: Object of type Circuit is not JSON serializable", "duration_s": 0.74}
