@@ -1,0 +1,32 @@
+#include <supa.h>
+#include <supa_device.h>
+
+#include "gemv.h"
+
+__global__ void gemv_colmajor_kernel(int M, int K, const float *__restrict__ A,
+                                     const float *__restrict__ x,
+                                     float *__restrict__ y) {
+    const int m = blockIdx.x * blockDim.x + threadIdx.x;
+    if (m >= M) {
+        return;
+    }
+
+    float acc = 0.0f;
+    for (int k = 0; k < K; ++k) {
+        acc += A[m + k * M] * x[k];
+    }
+    y[m] = acc;
+}
+
+extern "C" suError_t launch_gemv_colmajor(const float *d_A, const float *d_x,
+                                           float *d_y, int M, int K,
+                                           suStream_t stream) {
+    if (M <= 0 || K <= 0 || d_A == nullptr || d_x == nullptr || d_y == nullptr) {
+        return suErrorInvalidValue;
+    }
+
+    dim3 block(256);
+    dim3 grid((static_cast<unsigned>(M) + block.x - 1) / block.x);
+    gemv_colmajor_kernel<<<grid, block, 0, stream>>>(M, K, d_A, d_x, d_y);
+    return suGetLastError();
+}

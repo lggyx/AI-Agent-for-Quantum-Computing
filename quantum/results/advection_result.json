@@ -1,0 +1,18 @@
+{
+  "task": "advection_equation_demo",
+  "result": {
+    "status": "ok",
+    "summary": null,
+    "circuit_path": null,
+    "raw_keys": [
+      "circuit",
+      "grid",
+      "message",
+      "plot",
+      "status",
+      "u",
+      "x"
+    ]
+  },
+  "ok": true
+}

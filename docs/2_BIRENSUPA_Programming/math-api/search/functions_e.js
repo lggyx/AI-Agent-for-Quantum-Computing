@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['rcbrt_0',['rcbrt',['../math__functions_8h.html#a7292b1ebd1a66e85d5ccd8800db31a2a',1,'math_functions.h']]],
+  ['rcbrtf_1',['rcbrtf',['../cmath__functions_8h.html#add40ec7db42d2d6b2c02165b1c399597',1,'cmath_functions.h']]],
+  ['rcp_2',['rcp',['../math__functions_8h.html#ae7fdee783bf0613650b2f6876baa2b00',1,'rcp(float x):&#160;math_functions.h'],['../math__functions_8h.html#ae8707b5f09688e5dddf802a84fe12d66',1,'rcp(int x):&#160;math_functions.h'],['../math__functions_8h.html#a2b1bcaba1db1b421d30cb64cd18d69cd',1,'rcp(unsigned int x):&#160;math_functions.h']]],
+  ['relu_3',['relu',['../math__functions_8h.html#a90ca153845a621f10e8b870590548b0e',1,'relu(char x):&#160;math_functions.h'],['../math__functions_8h.html#a28890befc6ef12b411377db524d5bf24',1,'relu(unsigned char x):&#160;math_functions.h'],['../math__functions_8h.html#a471895adc4d27889517296fc9748b0ab',1,'relu(short x):&#160;math_functions.h'],['../math__functions_8h.html#a0cf71fd53d9859aff21cdb675dd6ec3c',1,'relu(unsigned short x):&#160;math_functions.h'],['../math__functions_8h.html#ab2d63aca2d733b179166574c1c83dcdf',1,'relu(int x):&#160;math_functions.h'],['../math__functions_8h.html#a16cf9b93a7fa057b8edae941205c9e63',1,'relu(unsigned int x):&#160;math_functions.h'],['../math__functions_8h.html#abe21f2ab1533ec58abf01a595d60ba87',1,'relu(long x):&#160;math_functions.h'],['../math__functions_8h.html#ab39a9880ebf30c0d1f266fb0f1e777c1',1,'relu(unsigned long x):&#160;math_functions.h'],['../math__functions_8h.html#a1d2ca367f55fc060d79a22963d99640a',1,'relu(float x):&#160;math_functions.h']]],
+  ['remainder_4',['remainder',['../math__functions_8h.html#ac9c0c6c6dcae792f0018cafe3fadd026',1,'math_functions.h']]],
+  ['remainderf_5',['remainderf',['../cmath__functions_8h.html#a0eb096655f5ebe5f08702d82ed950070',1,'cmath_functions.h']]],
+  ['remquo_6',['remquo',['../math__functions_8h.html#a20bbec599014cddad4c5881c41cb23ca',1,'math_functions.h']]],
+  ['remquof_7',['remquof',['../cmath__functions_8h.html#ac8fad39117f25ec31d777c788aad912f',1,'cmath_functions.h']]],
+  ['rhypot_8',['rhypot',['../math__functions_8h.html#a94e44599d731db1394b3b3b4369fa27b',1,'math_functions.h']]],
+  ['rhypotf_9',['rhypotf',['../cmath__functions_8h.html#ab18b03139a05e068621bb5cc4318e30d',1,'cmath_functions.h']]],
+  ['rint_10',['rint',['../math__functions_8h.html#a50eca8e45fa4d4b4e78d77fa5eb0af3d',1,'math_functions.h']]],
+  ['rintf_11',['rintf',['../cmath__functions_8h.html#a2fffab5282f053ed5ba4dba0b05bafdd',1,'cmath_functions.h']]],
+  ['rnorm_12',['rnorm',['../math__functions_8h.html#ac16b4b17634b29c73d0c7e1630c0ed2b',1,'math_functions.h']]],
+  ['rnorm3d_13',['rnorm3d',['../math__functions_8h.html#a64333ae800b3540e43b7c9b12d822101',1,'math_functions.h']]],
+  ['rnorm3df_14',['rnorm3df',['../cmath__functions_8h.html#a4f89357cee8f0af34b0a5dcae0978dcf',1,'cmath_functions.h']]],
+  ['rnorm4d_15',['rnorm4d',['../math__functions_8h.html#a6ec4704ef95f7abc2740d8f72d5cb5ea',1,'math_functions.h']]],
+  ['rnorm4df_16',['rnorm4df',['../cmath__functions_8h.html#a37f5c61540fc3ee8e4363eac41e1d4b9',1,'cmath_functions.h']]],
+  ['rnormf_17',['rnormf',['../cmath__functions_8h.html#a7c07f2d20d91c906feeef9f97ffa2510',1,'cmath_functions.h']]],
+  ['round_18',['round',['../math__functions_8h.html#aa9d622eff5a79f67fe544376583f9b63',1,'math_functions.h']]],
+  ['roundf_19',['roundf',['../cmath__functions_8h.html#a6f77349350bf8dba94b9780ee6900cc5',1,'cmath_functions.h']]],
+  ['rsqrt_20',['rsqrt',['../math__functions_8h.html#a9b9cc487b2d3c81647430dcc58e2ce60',1,'math_functions.h']]],
+  ['rsqrtf_21',['rsqrtf',['../cmath__functions_8h.html#a55e7b7fe7fcfda3d766ba112c15f2a97',1,'cmath_functions.h']]]
+];

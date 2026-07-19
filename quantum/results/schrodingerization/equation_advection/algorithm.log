@@ -1,0 +1,27 @@
+2026-06-22 15:37:58.842 [INFO ] - ==================================================
+2026-06-22 15:37:58.842 [INFO ] - Stage 1/5: Parsing advection equation parameters...
+2026-06-22 15:37:59.066 [INFO ] - - Advection speed a = 0.1
+2026-06-22 15:37:59.066 [INFO ] - - Computation domain length L = 16
+2026-06-22 15:37:59.066 [INFO ] - - Final time T = 1
+2026-06-22 15:37:59.066 [INFO ] - - Spatial qubits nx = 4
+2026-06-22 15:37:59.066 [INFO ] - - Ancilla qubits na = 8
+2026-06-22 15:37:59.066 [INFO ] - - Boundary condition: periodic
+2026-06-22 15:37:59.067 [INFO ] - Stage 1/5: Parameter parsing complete ✓
+2026-06-22 15:37:59.067 [INFO ] - ==================================================
+2026-06-22 15:37:59.067 [INFO ] - Stage 2/5: Building finite difference matrix...
+2026-06-22 15:37:59.067 [INFO ] - Stage 2/5: Finite difference matrix complete ✓
+2026-06-22 15:37:59.067 [INFO ] - ==================================================
+2026-06-22 15:37:59.067 [INFO ] - Stage 3/5: Starting computation...
+2026-06-22 15:37:59.082 [INFO ] - - Actual computation time: 0.0154 seconds
+2026-06-22 15:37:59.082 [INFO ] - Stage 3/5: Quantum circuit execution complete ✓
+2026-06-22 15:37:59.082 [INFO ] - ==================================================
+2026-06-22 15:37:59.082 [INFO ] - Stage 4/5: Generating solution plot...
+2026-06-22 15:37:59.430 [DEBUG] - Solution plot saved to: /workspace/quantum/results/schrodingerization/equation_advection/1D_Advection_Classical_nx=4_na=8_T=1_solution.svg
+2026-06-22 15:37:59.430 [INFO ] - Stage 4/5: Solution plot complete ✓
+2026-06-22 15:37:59.430 [INFO ] - ==================================================
+2026-06-22 15:37:59.430 [INFO ] - Stage 5/5: Generating circuit diagrams...
+2026-06-22 15:37:59.649 [DEBUG] - Quantum circuit diagrams saved to: /workspace/quantum/results/schrodingerization/equation_advection
+2026-06-22 15:37:59.649 [INFO ] - Generated 1 quantum circuit diagrams
+2026-06-22 15:37:59.649 [INFO ] - Stage 5/5: Circuit diagrams complete ✓
+2026-06-22 15:37:59.649 [INFO ] - ==================================================
+2026-06-22 15:37:59.649 [INFO ] - All stages complete, computation successful！

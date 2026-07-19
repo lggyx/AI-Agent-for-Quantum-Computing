@@ -1,0 +1,42 @@
+======================================================================
+          ⚛️ Grover Algorithm Algorithm Result ⚛️
+======================================================================
+📊 Status: success
+
+----------------------------------------------------------------------
+📥 Input parameters:
+----------------------------------------------------------------------
+  - Number of qubits (n): 3
+  - Target state (binary string): 101
+
+----------------------------------------------------------------------
+📝 Runtime logs:
+----------------------------------------------------------------------
+  - Stage 1/5: Preparing algorithm parameters...
+  -   - Data register size: n = 3 (total 4 qubits)
+  -   - Initial success probability p: 0.1250
+  -   - Computed iteration count (Reps): 2
+  - Stage 1/5 complete ✓
+  - Stage 2/5: Building quantum circuit...
+  - Stage 2/5 complete ✓
+  - Stage 3/5: Running quantum simulation...
+  -   - Computation time: 0.0218 s
+  - Stage 3/5 complete ✓
+  - Stage 4/5: Running classical post-processing (verifying amplification effect)...
+  -   - Initial target-state probability: 0.1250
+  -   - Amplified target-state probability: 0.9453
+  -   - Result check: find target state 101
+  - Stage 4/5 complete ✓
+  - Stage 5/5: Exporting quantum circuit diagram...
+  -   Circuit diagram saved: /workspace/quantum/results/fundamental_algorithm/grover/grover_algorithm_circuit.svg
+
+----------------------------------------------------------------------
+📤 Output information:
+----------------------------------------------------------------------
+  - Amplified target-state probability: 0.945311963558197
+  - Result: 101
+
+----------------------------------------------------------------------
+🔍 Summary:
+----------------------------------------------------------------------
+  Execution successful. Find state 101 with probability 0.9453.

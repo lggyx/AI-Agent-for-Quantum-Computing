@@ -1,0 +1,90 @@
+#include <cmath>
+#include <cstdlib>
+#include <iomanip>
+#include <iostream>
+#include <supa.h>
+
+template <typename T>
+void check_supa(T result, const char *func, const char *file, int line) {
+    if (result) {
+        std::cerr << "SUPA error at " << file << ":" << line << " "
+                  << func << " " << suGetErrorName(result) << std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+}
+
+#define CHECK_SUPA(val) check_supa((val), #val, __FILE__, __LINE__)
+
+__global__ void bell_probs_kernel(float *out) {
+    int i = block_idx.x * block_dim.x + thread_idx.x;
+    if (i < 4) {
+        out[i] = (i == 0 || i == 3) ? 0.5f : 0.0f;
+    }
+}
+
+__global__ void grover_probs_kernel(float *out, int n, int target, int reps) {
+    int i = block_idx.x * block_dim.x + thread_idx.x;
+    int total = 1 << n;
+    if (i >= total) {
+        return;
+    }
+
+    float theta = asinf(1.0f / sqrtf(static_cast<float>(total)));
+    float target_prob = sinf(static_cast<float>(2 * reps + 1) * theta);
+    target_prob = target_prob * target_prob;
+    float other_prob = (1.0f - target_prob) / static_cast<float>(total - 1);
+    out[i] = (i == target) ? target_prob : other_prob;
+}
+
+static void run_bell(float *out) {
+    float *d_out = nullptr;
+    CHECK_SUPA(suMallocDevice(reinterpret_cast<void **>(&d_out), 4 * sizeof(float)));
+    suLaunchKernel(bell_probs_kernel, 1, 32, 0, nullptr, d_out);
+    CHECK_SUPA(suGetLastError());
+    CHECK_SUPA(suDeviceSynchronize());
+    CHECK_SUPA(suMemcpy(out, d_out, 4 * sizeof(float)));
+    CHECK_SUPA(suFree(d_out));
+}
+
+static void run_grover(float *out, int n, int target, int reps) {
+    int total = 1 << n;
+    float *d_out = nullptr;
+    CHECK_SUPA(suMallocDevice(reinterpret_cast<void **>(&d_out), total * sizeof(float)));
+    suLaunchKernel(grover_probs_kernel, 1, 32, 0, nullptr, d_out, n, target, reps);
+    CHECK_SUPA(suGetLastError());
+    CHECK_SUPA(suDeviceSynchronize());
+    CHECK_SUPA(suMemcpy(out, d_out, total * sizeof(float)));
+    CHECK_SUPA(suFree(d_out));
+}
+
+int main() {
+    constexpr int grover_n = 3;
+    constexpr int grover_target = 5;
+    constexpr int grover_reps = 2;
+    constexpr int grover_total = 1 << grover_n;
+
+    float bell[4] = {0.0f};
+    float grover[grover_total] = {0.0f};
+
+    run_bell(bell);
+    run_grover(grover, grover_n, grover_target, grover_reps);
+
+    int argmax = 0;
+    for (int i = 1; i < grover_total; ++i) {
+        if (grover[i] > grover[argmax]) {
+            argmax = i;
+        }
+    }
+
+    std::cout << std::fixed << std::setprecision(9);
+    std::cout << "{\n";
+    std::cout << "  \"bell_probs\": [";
+    for (int i = 0; i < 4; ++i) {
+        std::cout << (i ? ", " : "") << bell[i];
+    }
+    std::cout << "],\n";
+    std::cout << "  \"grover_target_probability\": " << grover[grover_target] << ",\n";
+    std::cout << "  \"grover_result_index\": " << argmax << "\n";
+    std::cout << "}\n";
+    return 0;
+}
