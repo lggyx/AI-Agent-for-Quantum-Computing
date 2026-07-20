@@ -1,0 +1,5 @@
+Log file created at: 2026/07/21 00:17:09
+Running on machine: 4df0e218-ba70-4cd5-9446-8d92827f9e6b
+Running duration (h:mm:ss): 0:02:47
+Log line format: [IWEF]yyyymmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I20260721 00:17:09.057111 187934 DefaultLogger.cpp:75] Log instant flushing is not on for glog

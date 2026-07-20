@@ -3,25 +3,25 @@
     "demo": "Bell态演示",
     "command": "bell_state",
     "status": "ok",
-    "duration_s": 4.705
+    "duration_s": 4.752
   },
   {
     "demo": "Grover搜索（目标态101）",
     "command": "grover_search 目标态 101",
     "status": "ok",
-    "duration_s": 0.746
+    "duration_s": 0.732
   },
   {
     "demo": "VQC变分量子分类（1层，2epoch）",
     "command": "vqc_classify layers=1 epochs=2",
     "status": "ok",
-    "duration_s": 11.106
+    "duration_s": 21.705
   },
   {
     "demo": "平流方程模拟",
     "command": "advection_sim",
     "status": "ok",
-    "duration_s": 1.009
+    "duration_s": 0.973
   },
   {
     "demo": "自定义线路（H+CNOT）",

@@ -6,8 +6,8 @@ from unitarylab_algorithms import VQCAlgorithm
 
 
 def run(args: dict) -> dict:
-    layers = args.get("layers", 1)
-    epochs = args.get("epochs", 3)
+    layers = args.get("layers", 2)       # 默认 2 层（原 1 层），提高表达能力
+    epochs = args.get("epochs", 10)      # 默认 10 epoch（原 3），充分训练
     lr = args.get("lr", 0.05)
     batch_size = args.get("batch_size", 4)
     device = args.get("device", "gpu")

@@ -1,0 +1,29 @@
+Log file created at: 2026/07/21 00:09:03
+Running on machine: 4df0e218-ba70-4cd5-9446-8d92827f9e6b
+Running duration (h:mm:ss): 0:04:52
+Log line format: [IWEF]yyyymmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I20260721 00:09:03.078136 184841 DefaultLogger.cpp:75] Log instant flushing is not on for glog
+E20260721 00:09:03.078303 184841 DefaultLogger.cpp:87] 2026-07-20T16:09:03.078293356Z FRAMEWORK [torch_br] [ERROR] 184841 Throwing exception ERROR (SUPA):/home/br104/yuanqing/br_pytorch/torch_br/csrc/utils/MemHelper.h:38 ErrorCode: 719, exception occurred during kernel launch
+backtrace: 1: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::BaseException::traceOnThrow()+0x71
+backtrace: 2: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: torch_br::utils::SUPAException::SUPAException(suError, char const*, char const*, unsigned long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)+0x9e
+backtrace: 3: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: ()+0x3ed4ea
+backtrace: 4: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::MemHelper::_DataMove(torch_br::utils::MemHelper::MemMeta const*, torch_br::utils::MemHelper::MemMeta*, suStream*)+0x216
+backtrace: 5: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::MemHelper::transform()+0x9d
+backtrace: 6: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::DataTransform(ape::BRTensor const&, bool, ape::BRTensor const&, bool, suStream*)+0x89d
+backtrace: 7: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::CopyD2H(ape::BRTensor&, ape::BRTensor&, suStream*)+0x745
+backtrace: 8: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: ()+0xeb1d83
+backtrace: 9: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: ()+0xbfdd90
+backtrace:10: /usr/local/lib/python3.10/dist-packages/torch/lib/libtorch_cpu.so: at::_ops::copy_::call(at::Tensor&, at::Tensor const&, bool)+0x197
+backtrace:11: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: at::supa::SUPANativeFunctions::_to_copy(at::Tensor const&, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, bool, std::optional<c10::MemoryFormat>)+0x7c1
+backtrace:12: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: ()+0xc12e40
+backtrace:13: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: ()+0xc12f21
+backtrace:14: /usr/local/lib/python3.10/dist-packages/torch/lib/libtorch_cpu.so: at::_ops::_to_copy::redispatch(c10::DispatchKeySet, at::Tensor const&, std::optional<c10::ScalarType>, std::optional<c10::Layout>, std::optional<c10::Device>, std::optional<bool>, bool, std::optional<c10::MemoryFormat>)+0xf2
+backtrace:15: /usr/local/lib/python3.10/dist-packages/torch/lib/libtorch_cpu.so: ()+0x2a1763b
+E20260721 00:09:03.595342 184841 DefaultLogger.cpp:87] 2026-07-20T16:09:03.595334070Z FRAMEWORK [torch_br] [ERROR] 184841 Throwing exception ERROR (SUPA):/home/br104/yuanqing/br_pytorch/torch_br/csrc/core/supa/SUPACachingAllocator.cpp:1578 ErrorCode: 719, exception occurred during kernel launch
+backtrace: 1: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::utils::BaseException::traceOnThrow()+0x71
+backtrace: 2: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libtorch_br.so: torch_br::utils::SUPAException::SUPAException(suError, char const*, char const*, unsigned long, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&)+0x9e
+backtrace: 3: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: ()+0x3e2cfe
+backtrace: 4: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::allocator::SUPACachingAllocator::release_blocks(torch_br::allocator::BlockPool&)+0xd9
+backtrace: 5: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::allocator::DeviceCachingAllocator::release_cached_blocks(std::shared_ptr<c10::GatheredContext> const&)+0x4f
+backtrace: 6: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_common.so: torch_br::allocator::DeviceCachingAllocator::emptyCache()+0x55
+backtrace: 7: /usr/local/lib/python3.10/dist-packages/torch_br/lib/libbr_com

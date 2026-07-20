@@ -10,8 +10,8 @@
 |---|---|---|---|---|
 | `bell_state` | Bell态制备与测量 | 构建2量子比特Bell态线路，展示纠缠态概率分布 | `device` (cpu/gpu) | 概率向量、线路图、验证结果 |
 | `grover_search` | Grover搜索算法 | 面向3量子比特的无结构搜索，放大目标态概率 | `target` (比特串), `device` | 搜索概率、线路图、结果态 |
-| `vqc_classify` | VQC变分量子分类 | 变分量子线路二分类训练与评估 | `layers`, `epochs`, `lr`, `device` | 准确率、损失曲线、训练过程 |
-| `advection_sim` | 平流方程量子模拟 | 薛定谔化方法求解一维平流方程 | `nx`, `na`, `T` | 数值解、误差分析 |
+| `vqc_classify` | VQC变分量子分类 | 变分量子线路二分类训练与评估 | `layers` (默认2), `epochs` (默认10), `lr`, `device` | 准确率、损失曲线、训练过程 |
+| `advection_sim` | 平流方程量子模拟 | 薛定谔化方法求解一维平流方程 | `nx`, `na`, `T` | 数值解、误差分析、线路图 |
 | `compare_backends` | SUPA vs UnitaryLab对比 | 壁仞GPU原生实现与UnitaryLab交叉验证 | 无（使用预设参数） | 误差指标、一致性报告 |
 | `circuit_builder` | 自定义量子线路 | 从自然语言描述构建任意量子线路并执行 | `qubits`, `gates` (门序列) | 状态矢量、概率分布、线路图 |
 | `visualize` | 结果可视化 | 将运行结果绘制为概率分布图或线路图 | `data` (运行结果) | SVG/PNG 图表 |
