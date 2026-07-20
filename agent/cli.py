@@ -226,7 +226,7 @@ def run_all_demos(engine: SkillEngine, devices: list[str] | None = None) -> None
     demos = [
         ("Bell态演示", "bell_state"),
         ("Grover搜索（目标态101）", "grover_search 目标态 101"),
-        ("VQC变分量子分类（1层，2epoch）", "vqc_classify layers=1 epochs=2"),
+        ("VQC变分量子分类（优化参数，2层，3epoch）", "vqc_classify layers=2 epochs=3"),
         ("平流方程模拟", "advection_sim"),
         ("自定义线路（H+CNOT）", "h(0), cx(0,1)"),
         ("帮助信息", "help"),
